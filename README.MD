@@ -1,6 +1,6 @@
 # 餐廳清單
-![index](https://xx.png)
-![show](https://xx.png)
+![index](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_2.jpg)
+![show](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_3.jpg)
 ## 規格:
 + 程式編輯器: [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/ "Visual Studio Code") 
 + 使用框架: [express](https://www.npmjs.com/package/express)@4.16.4
@@ -40,6 +40,7 @@ npm i
 npm run dev
 ```
 如成功終端機會顯示:
-![serverStarted](https://xx.png)
+![serverStarted](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_1.jpg)
+
 5. 開啟瀏覽器進入 http://localhost:3000 即可
 
