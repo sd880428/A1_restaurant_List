@@ -41,5 +41,6 @@ npm run dev
 ```
 如成功終端機會顯示:
 ![serverStarted](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_1.jpg)
+
 5. 開啟瀏覽器進入 http://localhost:3000 即可
 
