@@ -1,6 +1,5 @@
 const express = require('express')
 const exphbs = require('express-handlebars') 
-const restaurants = require('./restaurant.json')
 const mongoose = require('mongoose')
 if (process.env.NODE_ENV !== 'production') { //僅在非正式環境時, 載入 dotenv
   require('dotenv').config()
