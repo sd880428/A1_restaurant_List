@@ -1,0 +1,56 @@
+{{!restaurant.-- 餐廳資訊 --}}
+<h1 class="mb-1 restaurant-show-title">Edit Restaurant</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+      <form action="/restaurants/{{ restaurant._id }}/edit" method="post">
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>餐廳名</span>
+          <input type="text" class="form-control" name="name" placeholder="name" aria-label="name" value="{{ restaurant.name }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>英文名</span>
+          <input type="text" class="form-control" name="nameEn" placeholder="English name" aria-label="nameEn" value="{{ restaurant.name_en }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>類別</span>
+          <input type="text" class="form-control" name="category" placeholder="category" aria-label="category" value="{{ restaurant.category }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-map-marker-alt pr-2"></i>地址</span>
+          <input type="text" class="form-control" name="location" placeholder="location" aria-label="location" value="{{ restaurant.location }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-map-marker-alt pr-2"></i>google地圖位置</span>
+          <input type="text" class="form-control" name="google_map" placeholder="google_map" aria-label="google_map" value="{{ restaurant.google_map }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-mobile-alt pr-2"></i>電話</span>
+          <input type="text" class="form-control" name="phone" placeholder="phone" aria-label="phone" value="{{ restaurant.phone }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-image"></i>圖片網址</span>
+          <input type="text" class="form-control" name="image" placeholder="image" aria-label="image" value="{{ restaurant.image }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-star pr-2"></i>評分</span>
+          <input type="text" class="form-control" name="rating" placeholder="rating" aria-label="rating" value="{{ restaurant.rating }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-align-left"></i>描述</span>
+          <textarea class="form-control" name="description" aria-label="With textarea" rows="3">{{ restaurant.description }}</textarea>
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Save all</button>
+      </form>
+    </div>
+  </div>
+</div>
