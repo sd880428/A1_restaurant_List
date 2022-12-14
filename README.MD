@@ -1,5 +1,5 @@
 # 餐廳清單
-![index](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_2.jpg)
+![index](https://github.com/sd880428/restaurant_List_ACP/blob/master/public/img/indexPreview.jpg)
 ![show](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_3.jpg)
 ## 規格:
 + 程式編輯器: [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/ "Visual Studio Code") 
@@ -20,6 +20,8 @@
   - 電話
   - 簡述
   - 圖片  
++ 使用者可以刪除餐廳
++ 使用者可以編輯餐廳
 ---
 ## 安裝與執行:
 1. clone此專案
