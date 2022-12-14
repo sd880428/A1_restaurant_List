@@ -1,0 +1,56 @@
+<h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+      <form action="/restaurants/create" method="post">
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>餐廳名</span>
+          <input type="text" class="form-control" name="name" placeholder="Enter name..." aria-label="name" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>英文名</span>
+          <input type="text" class="form-control" name="nameEn" placeholder="Enter English... name" aria-label="nameEn" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>類別</span>
+          <input type="text" class="form-control" name="category" placeholder="Enter category..." aria-label="category" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-map-marker-alt pr-2"></i>地址</span>
+          <input type="text" class="form-control" name="location" placeholder="Enter location..." aria-label="location" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-map-marker-alt pr-2"></i>google地圖位置</span>
+          <input type="text" class="form-control" name="google_map" placeholder="Enter google_map..."
+            aria-label="google_map" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-mobile-alt pr-2"></i>電話</span>
+          <input type="text" class="form-control" name="phone" placeholder="Enter phone..." aria-label="phone" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-image"></i>圖片網址</span>
+          <input type="text" class="form-control" name="image" placeholder="Enter image..." aria-label="image" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-star pr-2"></i>評分</span>
+          <input type="text" class="form-control" name="rating" placeholder="Enter rating..." aria-label="rating" required>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-align-left"></i>描述</span>
+          <textarea class="form-control" name="description" aria-label="With  textarerequireda" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-5">新增</button>
+      </form>
+    </div>
+  </div>
+</div>
