@@ -27,7 +27,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => { //首頁
-  Restaurant.find() //從資料庫取出所有餐廳
+  return Restaurant.find() //從資料庫取出所有餐廳
     .lean() //過濾成javascript成資料陣列
     .then(Restaurants => res.render('index', { Restaurants })) //將過濾資料傳給index
     .catch(error => console.error(error)) //錯誤處理
@@ -35,7 +35,7 @@ app.get('/', (req, res) => { //首頁
 
 app.get('/restaurants/:restaurant', (req, res) => { //詳細資訊
   const id = req.params.restaurant //餐廳ID
-  Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
+  return Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
     .lean() //過濾成javascript成資料陣列
     .then(restaurant => res.render('show', { restaurant })) //帶入show頁面
     .catch(error => console.error(error)) //錯誤處理
@@ -43,7 +43,7 @@ app.get('/restaurants/:restaurant', (req, res) => { //詳細資訊
 
 app.get('/restaurants/edit/:restaurant', (req, res) => { //編輯頁面
   const id = req.params.restaurant //餐廳ID
-  Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
+  return Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
     .lean() //過濾成javascript成資料陣列
     .then(restaurant => res.render('edit', { restaurant })) //帶入show頁面
     .catch(error => console.error(error)) //錯誤處理
@@ -59,6 +59,26 @@ app.get('/search', (req, res) => { //搜尋
     })
     res.render('index', { Restaurants: filterRestaurants, keyword: keyword })
   })
+})
+
+app.get('/create', (req, res) => {
+  res.render('create')
+})
+
+app.post('/restaurants/create', (req, res) => {
+  return Restaurant.create({
+    name: req.body.name,
+    name_en: req.body.nameEn,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.googleMap,
+    rating: req.body.rating,
+    description: req.body.description
+  })
+  .then(() => res.redirect('/'))
+  .catch(error => console.error(error)) //錯誤處理
 })
 
 app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
