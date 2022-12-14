@@ -51,13 +51,17 @@ app.get('/restaurants/edit/:restaurant', (req, res) => { //編輯頁面
 
 app.get('/search', (req, res) => { //搜尋
   const keyword = req.query.keyword.toLowerCase()
-  const filterRestaurants = restaurants.results.filter(restaurant => {
-    return `${restaurant.name.toLowerCase() + restaurant.category}`.includes(keyword)
+  Restaurant.find()
+  .lean()
+  .then((restaurant) => {
+    const filterRestaurants = restaurant.filter(restaurant => {
+      return `${restaurant.name.toLowerCase() + restaurant.category}`.includes(keyword)
+    })
+    res.render('index', { Restaurants: filterRestaurants, keyword: keyword })
   })
-  res.render('index', { restaurants: filterRestaurants, keyword: keyword })
 })
 
-app.post('/restaurants/:restaurant/edit', (req, res) => {
+app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
   const id = req.params.restaurant
   const name = req.body.name
   const nameEn = req.body.nameEn
@@ -70,7 +74,7 @@ app.post('/restaurants/:restaurant/edit', (req, res) => {
   const description = req.body.description
 
   return Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
-    .then((restaurant) => {
+    .then((restaurant) => { //更改資訊
       restaurant.name = name
       restaurant.name_en = nameEn
       restaurant.category = category
@@ -81,9 +85,17 @@ app.post('/restaurants/:restaurant/edit', (req, res) => {
       restaurant.rating = rating
       restaurant.description = description
       return restaurant.save()
-    }) //帶入show頁面
-    .then((restaurant) => res.redirect(`/restaurants/${id}`), { restaurant })
+    }) 
+    .then((restaurant) => res.redirect(`/restaurants/${id}`), { restaurant })//導回Detail頁面
     .catch(error => console.error(error)) //錯誤處理
+})
+
+app.post('/restaurants/delete/:restaurant', (req, res) => { //刪除餐廳
+  const id = req.params.restaurant
+  return Restaurant.findById(id)
+  .then(restaurant => restaurant.remove())
+  .then(() => res.redirect('/'))
+  .catch(error => console.error(error)) //錯誤處理
 })
 
 app.listen(port, () => {
