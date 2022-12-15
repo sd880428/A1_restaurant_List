@@ -21,7 +21,6 @@ router.get('/edit/:restaurant', (req, res) => { //編輯頁面
 
 
 
-
 router.post('/create', (req, res) => {
   return Restaurant.create({ ...req.body })
     .then(() => res.redirect('/'))
