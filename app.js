@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const restaurant = require('./models/restaurant')
 const Restaurant = require('./models/restaurant') //載入restarunant models
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
 if (process.env.NODE_ENV !== 'production') { //僅在非正式環境時, 載入 dotenv
   require('dotenv').config()
 }
@@ -25,6 +27,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => { //首頁
   return Restaurant.find() //從資料庫取出所有餐廳
@@ -92,7 +95,7 @@ app.post('/restaurants/create', (req, res) => {
     .catch(error => console.error(error)) //錯誤處理
 })
 
-app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
+app.put('/restaurants/:restaurant', (req, res) => { //編輯資訊
   const id = req.params.restaurant
 
   return Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
@@ -104,7 +107,7 @@ app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
     .catch(error => console.error(error)) //錯誤處理
 })
 
-app.post('/restaurants/delete/:restaurant', (req, res) => { //刪除餐廳
+app.delete('/restaurants/:restaurant', (req, res) => { //刪除餐廳
   const id = req.params.restaurant
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())

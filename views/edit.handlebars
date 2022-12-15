@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
-      <form action="/restaurants/{{ restaurant._id }}/edit" method="post">
+      <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="post">
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="fas fa-utensils pr-2"></i>餐廳名</span>
           <input type="text" class="form-control" name="name" placeholder="name" aria-label="name" value="{{ restaurant.name }}">
