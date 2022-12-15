@@ -13,18 +13,7 @@ db.on('error', () => {
 //成功連進資料庫後，新增種子進資料庫
 db.once('open', () => {
   restaurantJSON.forEach(restaurants => {
-    restaurant.create({
-      id: restaurants.id,
-      name: restaurants.name,
-      name_en: restaurants.name_en,
-      category: restaurants.category,
-      image: restaurants.image,
-      location: restaurants.location,
-      phone: restaurants.phone,
-      google_map: restaurants.google_map,
-      rating: restaurants.rating,
-      description: restaurants.description
-    })
+    restaurant.create({ ...restaurants })
   });  
 })
 

@@ -6,11 +6,25 @@
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
+          {{!-- 搜尋input --}}
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{ keyword }}" aria-describedby="search-button">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
-                class="fas fa-search"></i></button>
+            <div class="btn-group">
+              {{!-- 搜尋按鈕 --}}
+              <button class="btn btn-outline-secondary" type="submit" id="search-button"><i class="fas fa-search"></i>
+              </button>
+              {{!-- 分割分類按鈕 --}}
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortMenu2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortMenu2">
+                <li><button class="dropdown-item" name="sort" type="submit" value="asc">A->Z</button></li>
+                <li><button class="dropdown-item" name="sort" type="submit" value="desc">Z->A</button></li>
+                <li><button class="dropdown-item" name="sort" type="submit" value="category">類別</button></li>
+                <li><button class="dropdown-item" name="sort" type="submit" value="location">地區</button></li>
+              </ul>
+            </div>
           </div>
         </div>
       </form>
@@ -54,7 +68,8 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="confirmDeletion{{ this._id }}" tabindex="-1" aria-labelledby="confirmDeletionLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmDeletion{{ this._id }}" tabindex="-1" aria-labelledby="confirmDeletionLabel"
+          aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -82,4 +97,3 @@
 <div class="fixed-bottom d-flex flex-row-reverse pe-none me-5 mb-3">
   <a class="btn btn-success btn-lg pe-auto" href="/create">新增餐廳</a>
 </div>
-

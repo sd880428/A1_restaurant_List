@@ -51,13 +51,15 @@ app.get('/restaurants/edit/:restaurant', (req, res) => { //編輯頁面
 
 app.get('/search', (req, res) => { //搜尋
   const keyword = req.query.keyword.toLowerCase()
+  const sortBy = req.query.sort
   Restaurant.find()
   .lean()
+  .sort({ name: 'asc' })
   .then((restaurant) => {
     const filterRestaurants = restaurant.filter(restaurant => {
       return `${restaurant.name.toLowerCase() + restaurant.category}`.includes(keyword)
     })
-    res.render('index', { Restaurants: filterRestaurants, keyword: keyword })
+    res.render('index', { Restaurants: filterRestaurants, keyword, sortBy })
   })
 })
 
@@ -66,44 +68,17 @@ app.get('/create', (req, res) => {
 })
 
 app.post('/restaurants/create', (req, res) => {
-  return Restaurant.create({
-    name: req.body.name,
-    name_en: req.body.nameEn,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.googleMap,
-    rating: req.body.rating,
-    description: req.body.description
-  })
+  return Restaurant.create({ ...req.body })
   .then(() => res.redirect('/'))
   .catch(error => console.error(error)) //錯誤處理
 })
 
 app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
   const id = req.params.restaurant
-  const name = req.body.name
-  const nameEn = req.body.nameEn
-  const category = req.body.category
-  const location = req.body.location
-  const googleMap = req.body.google_map
-  const phone = req.body.phone
-  const image = req.body.image
-  const rating = req.body.rating
-  const description = req.body.description
 
   return Restaurant.findById(id) //從資料庫抓出與該ID相同的餐廳
     .then((restaurant) => { //更改資訊
-      restaurant.name = name
-      restaurant.name_en = nameEn
-      restaurant.category = category
-      restaurant.image = image
-      restaurant.location = location
-      restaurant.phone = phone
-      restaurant.google_map = googleMap
-      restaurant.rating = rating
-      restaurant.description = description
+      restaurant = Object.assign(restaurant, req.body)
       return restaurant.save()
     }) 
     .then((restaurant) => res.redirect(`/restaurants/${id}`), { restaurant })//導回Detail頁面
