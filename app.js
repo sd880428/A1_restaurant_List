@@ -51,16 +51,35 @@ app.get('/restaurants/edit/:restaurant', (req, res) => { //編輯頁面
 
 app.get('/search', (req, res) => { //搜尋
   const keyword = req.query.keyword.toLowerCase()
-  const sortBy = req.query.sort
+  const sort = req.query.sort || ''
+  let sortBy = ''
+  switch (sort) {
+    case "asc":
+      sortBy = { name: 'asc' }
+      break
+    case "desc":
+      sortBy = { name: 'desc' }
+      break
+    case "category":
+      sortBy = { category: 'asc' }
+      break
+    case "location":
+      sortBy = { loaction: 'asc' }
+      break
+    default:
+      sortBy = { name: 'asc' }
+      break
+  }
+
   Restaurant.find()
-  .lean()
-  .sort({ name: 'asc' })
-  .then((restaurant) => {
-    const filterRestaurants = restaurant.filter(restaurant => {
-      return `${restaurant.name.toLowerCase() + restaurant.category}`.includes(keyword)
+    .lean()
+    .sort(sortBy)
+    .then((restaurant) => {
+      const filterRestaurants = restaurant.filter(restaurant => {
+        return `${restaurant.name.toLowerCase() + restaurant.category}`.includes(keyword)
+      })
+      res.render('index', { Restaurants: filterRestaurants, keyword, sortBy })
     })
-    res.render('index', { Restaurants: filterRestaurants, keyword, sortBy })
-  })
 })
 
 app.get('/create', (req, res) => {
@@ -69,8 +88,8 @@ app.get('/create', (req, res) => {
 
 app.post('/restaurants/create', (req, res) => {
   return Restaurant.create({ ...req.body })
-  .then(() => res.redirect('/'))
-  .catch(error => console.error(error)) //錯誤處理
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error)) //錯誤處理
 })
 
 app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
@@ -80,7 +99,7 @@ app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
     .then((restaurant) => { //更改資訊
       restaurant = Object.assign(restaurant, req.body)
       return restaurant.save()
-    }) 
+    })
     .then((restaurant) => res.redirect(`/restaurants/${id}`), { restaurant })//導回Detail頁面
     .catch(error => console.error(error)) //錯誤處理
 })
@@ -88,9 +107,9 @@ app.post('/restaurants/:restaurant/edit', (req, res) => { //編輯資訊
 app.post('/restaurants/delete/:restaurant', (req, res) => { //刪除餐廳
   const id = req.params.restaurant
   return Restaurant.findById(id)
-  .then(restaurant => restaurant.remove())
-  .then(() => res.redirect('/'))
-  .catch(error => console.error(error)) //錯誤處理
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error)) //錯誤處理
 })
 
 app.listen(port, () => {
