@@ -6,6 +6,9 @@
 + 程式編輯器: [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/ "Visual Studio Code") 
 + 使用框架: [express](https://www.npmjs.com/package/express)@4.16.4
 + 模板引擎: [express-handlebars](https://www.npmjs.com/package/express-handlebars)@3.0.0
++ method-override@3.0.0
++ mongoose@5.9.7
++ dotenv@16.0.3
 ---
 ## 功能:
 + 使用者可以在首頁看到所有餐廳的
@@ -24,6 +27,7 @@
 + 使用者可以新增餐廳
 + 使用者可以刪除餐廳
 + 使用者可以編輯餐廳
++ 使用者可以搜尋餐廳
 ---
 ## 安裝與執行:
 1. clone此專案
