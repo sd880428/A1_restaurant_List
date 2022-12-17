@@ -43,12 +43,14 @@ cd ~/.../A1_restaurant_List/
 ```
 npm i
 ```
-4. 執行
+4. 自行加入.env 檔
+
+5. 執行
 ```
 npm run dev
 ```
 如成功終端機會顯示:
 ![serverStarted](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_1.jpg)
 
-5. 開啟瀏覽器進入 http://localhost:3000 即可
+6. 開啟瀏覽器進入 http://localhost:3000 即可
 
