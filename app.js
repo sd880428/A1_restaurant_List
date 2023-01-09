@@ -5,7 +5,9 @@ const methodOverride = require('method-override')
 const routes = require('./routes')
 const session = require('express-session')
 const flash = require('connect-flash')
-
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const usePassport = require('./config/passport')
 require('./config/mongoose')
 
