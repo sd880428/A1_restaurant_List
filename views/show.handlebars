@@ -4,13 +4,16 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
-      <p class="mb-1">
-        <span class="text-secondary">
-          <i class="fas fa-utensils pr-2"></i>
-          類別：
-        </span>
-        {{ restaurant.category }}
-      </p>
+      <div class="d-flex justify-content-between">
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+          {{ restaurant.category }}
+        </p>
+        <a href="/restaurants/edit/{{restaurant._id}}" class="btn btn-secondary btn-sm">Edit</a>
+      </div>
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-map-marker-alt pr-2"></i>
