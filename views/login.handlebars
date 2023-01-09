@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-3 m-auto ">
+    <div class="card card-body mt-1">
+      <h1 class="text-center pb-2 ">Login</h1>
+      <form action="/users/login" method="post">
+        <label for="email" class="mb-2">Email</label>
+        <input type="email" class="form-control mb-2" name="email" id="email" placeholder="Enter email..." required>
+        <label for="password" class="mb-2">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password..."
+          required>
+        <div class="d-grid gap-2 mt-3">
+          <button class="btn btn-outline-warning">Login</button>
+        </div>
+        <hr>
+        <p class="m-0">還沒有帳號嗎? <a href="/users/register">點此註冊</a></p>
+      </form>
+    </div>
+  </div>
+</div>
