@@ -30,7 +30,7 @@ db.once('open', () => {
         bcrypt.genSalt(10)
           .then(salt => bcrypt.hash(users.password, salt))
           .then(hash => {
-            User.create({ email: users.email, password: hash })
+            User.create({ name: 'Seeder', email: users.email, password: hash })
               .then(user => {
                 const userId = user._id
                 return Promise.all(Array.from(
