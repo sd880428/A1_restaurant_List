@@ -22,7 +22,7 @@ const seedUser = [
 db.once('open', () => {
   seedUser.forEach(users => {
     User.findOne({ email: users.email })
-      .then(user => {
+      .then(user => { 
         if (user) {
           console.log('種子使用者已存在!')
           return process.exit()

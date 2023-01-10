@@ -42,7 +42,10 @@ router.put('/:restaurant', (req, res) => { //編輯資訊
       restaurant = Object.assign(restaurant, req.body)
       return restaurant.save()
     })
-    .then(() => res.redirect(`/restaurants/${_id}`))//導回Detail頁面
+    .then(() => {//導回Detail頁面
+      req.flash('successMsg', '儲存變更成功')
+      res.redirect(`/restaurants/${_id}`)
+    })
     .catch(error => console.error(error)) //錯誤處理
 })
 
@@ -51,7 +54,10 @@ router.delete('/:restaurant', (req, res) => { //刪除餐廳
   const userId = req.user._id
   return Restaurant.findOne({ _id, userId })
     .then(restaurant => restaurant.remove())
-    .then(() => res.redirect('/'))
+    .then(() => {
+      req.flash('successMsg', '已刪除此餐廳')
+      res.redirect('/')
+    })
     .catch(error => console.error(error)) //錯誤處理
 })
 
