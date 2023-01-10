@@ -1,4 +1,5 @@
 # 餐廳清單
+![login]()
 ![index](https://github.com/sd880428/restaurant_List_ACP/blob/master/public/img/indexPreview.jpg)
 ![show](https://raw.githubusercontent.com/sd880428/restaurant_List_ACP/master/public/img/Screenshot_3.jpg)
 ![edit](https://raw.githubusercontent.com/sd880428/restaurant_List_ACP/master/public/img/editPage.jpg)
@@ -6,11 +7,20 @@
 + 程式編輯器: [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/ "Visual Studio Code") 
 + 使用框架: [express](https://www.npmjs.com/package/express)@4.16.4
 + 模板引擎: [express-handlebars](https://www.npmjs.com/package/express-handlebars)@3.0.0
-+ method-override@3.0.0
-+ mongoose@5.9.7
-+ dotenv@16.0.3
++ [method-override](https://www.npmjs.com/package/method-override)@3.0.0
++ [mongoose](https://www.npmjs.com/package/mongoose)@5.9.7
++ [dotenv](https://www.npmjs.com/package/dotenv)@16.0.3
++ [bcryptjs](https://www.npmjs.com/package/bcryptjs)@2.4.3
++ [connect-flash](https://www.npmjs.com/package/connect-flash)@0.1.1
++ [express-session](https://www.npmjs.com/package/express-session)@1.17.3
++ [passport](https://www.npmjs.com/package/passport)@0.6.0
++ [passport-facebook](https://www.npmjs.com/package/passport-facebook)@3.0.0
++ [passport-local](https://www.npmjs.com/package/passport-local)@1.0.0
 ---
 ## 功能:
++ 使用者可以註冊帳號，資料包刮名字、email、密碼、確認密碼
++ 使用者也可以透過Facebook註冊帳號
++ 使用者必須登入才可使用餐廳清單
 + 使用者可以在首頁看到所有餐廳的
   - 圖片
   - 店名

@@ -9,7 +9,7 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  const name = req.body.name.trim() || "匿名"
+  const name = req.body.name.trim() || "匿名" //如果使用者註冊時沒填寫名字則預設為'匿名'
   const { email, password, confirmPassword } = req.body
   let error = []
   if (!email || !password || !confirmPassword) {
