@@ -1,5 +1,5 @@
 # 餐廳清單
-![login]()
+![login](./public/img/detailPage.jpg)
 ![index](https://github.com/sd880428/restaurant_List_ACP/blob/master/public/img/indexPreview.jpg)
 ![show](https://raw.githubusercontent.com/sd880428/restaurant_List_ACP/master/public/img/Screenshot_3.jpg)
 ![edit](https://raw.githubusercontent.com/sd880428/restaurant_List_ACP/master/public/img/editPage.jpg)
