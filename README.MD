@@ -41,12 +41,12 @@
 ## 安裝與執行:
 1. clone此專案
 ```
-git clone https://github.com/sd880428/A1_restaurant_List.git
+git clone https://github.com/sd880428/restaurant_List_ACP.git
 ```
 
 2. 使用終端機到此專案目錄下
 ```
-cd ~/.../A1_restaurant_List/
+cd ~/.../restaurant_List_ACP/
 ```
 3. 安裝套件
 ```
@@ -59,7 +59,7 @@ npm i
 npm run dev
 ```
 如成功終端機會顯示:
-![serverStarted](https://raw.githubusercontent.com/sd880428/A1_restaurant_List/master/public/img/Screenshot_1.jpg)
+![serverStarted](./public/img/startSuccess.jpg)
 
 6. 開啟瀏覽器進入 http://localhost:3000 即可
 
