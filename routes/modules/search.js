@@ -6,7 +6,7 @@ router.get('/', (req, res) => { //搜尋
   const keyword = req.query.keyword.toLowerCase()
   const sort = req.query.sort || ''
   const userId = req.user._id
-  let sortBy = ''
+  let sortBy = {}
   switch (sort) {
     case "asc":
       sortBy = { name: 'asc' }
