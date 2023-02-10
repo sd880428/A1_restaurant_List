@@ -49,17 +49,21 @@ const seedUser = [
 // })
 
 db.once('open', async () => {
-  await Promise.all(
-    seedUser.map(async users => {
+  await Promise.all( //參考教案寫法
+    seedUser.map(async users => { 
+      //檢查是否已創建
       let user = await User.findOne({ email: users.email })
       if (user) {
         console.log('種子使用者已存在!')
         return process.exit()
       }
-      const hash = bcrypt.hashSync(users.password, 8)
+      //--創建使用者
+      const hash = bcrypt.hashSync(users.password, 10)
       user = await User.create({ name: 'Seeder', email: users.email, password: hash })
       const userId = user._id
+      //過濾出使用者擁有的餐廳
       const filtedRestaurant = restaurantJSON.filter((_, i) => users.restaurantIndex.includes(i))
+      //塞入userId
       filtedRestaurant.forEach(restaurant => restaurant.userId = userId)
       await Restaurant.create(filtedRestaurant)
     })
